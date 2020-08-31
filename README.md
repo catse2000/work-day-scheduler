@@ -43,3 +43,11 @@
     * if "hour" is more than "currentTime" the class "future" is added to description
 
 ### Commenting and Code Cleanup
+* went through code and made final changes to styling and cleared up any code debt
+
+## Screenshot of completed application
+![Finish Application Screenshot](./assets/img/appScreenshot.png)
+
+## Links to finished work
+### GitHub Repo
+[Github Repo Site]()

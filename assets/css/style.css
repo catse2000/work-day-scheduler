@@ -4,6 +4,7 @@ body {
   line-height: 1;
 }
 
+/* style textarea */
 textarea{
   background: transparent;
   border: none;
@@ -13,6 +14,7 @@ textarea{
   padding: 10px;
 }
 
+/* style header */
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -21,53 +23,71 @@ textarea{
   border-bottom: 10px solid black;
 }
 
+/* style area where event description will be added */
 .description{
   white-space: pre-wrap;
   padding: 10px;
   
 }
 
+/* not sure what this is for but did not use */
 .time-block{
   text-align: center;
   border-radius: 15px;
 }
 
+/* style entire timeblock row */
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
 }
 
+/* style for section of timeblock that displays time */
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding: 10px;
+  text-align: right;
 }
 
+/* styling for description when .hour is in the past */
 .past {
   background-color: #d3d3d3;
   color: black;
 }
 
+/* styling for description when .hour is in the present */
 .present {
   background-color: #ff6961;
   color: black;
 }
 
+/* styling for description when .hour is in the future */
 .future {
   background-color: #77dd77;
   color: black;
 }
 
+/* styling for save button */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  
 }
 
-.saveBtn i:hover {
+/* styling for when mouse hovers over save button */
+.saveBtn:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+  color: black;
+}
+
+/* remove outline when button is clicked */
+.saveBtn:focus {
+  outline: none;
 }
