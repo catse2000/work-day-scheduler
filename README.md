@@ -45,9 +45,10 @@
 ### Commenting and Code Cleanup
 * went through code and made final changes to styling and cleared up any code debt
 
+## Links to finished work
+* [Github Repo Site](https://github.com/catse2000/work-day-scheduler)
+* [Loaded Application](https://catse2000.github.io/work-day-scheduler/)
+
 ## Screenshot of completed application
 ![Finish Application Screenshot](./assets/img/appScreenshot.png)
 
-## Links to finished work
-### GitHub Repo
-[Github Repo Site]()
