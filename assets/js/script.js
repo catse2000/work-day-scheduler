@@ -1,5 +1,9 @@
     //array to store for localStorage
     var events = {};
+    for (var i = 0; i < 9; i++)
+    {
+        events[i] = {};
+    }
 
     //create timeblocks
     var createBlock = function(text, hours){
@@ -44,6 +48,10 @@
         //if nothing in localStorage, create a new object to track all events throughout the day
         if (!events){
             events = {};
+            for (var i = 0; i < 9; i++)
+            {
+                events[i] = {};
+            }
         }
 
         //assign today's date to the <p> element in the header
