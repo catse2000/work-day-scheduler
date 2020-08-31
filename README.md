@@ -34,3 +34,9 @@
 * when application loads, it checks for content in local storage
     * if index in local storage does not have content, "span" element is updated with ''
 
+### Task Colors
+* adjusted "hour" variable to push a number instead of a string to createEvent() so it can be compared
+* "hour" variable is compared against currentTime variable, which pulls the current hour, to determine what color the background should be
+    * if "hour" is less than "currentTime" the class "past" is added to description
+    * if "hour" is equal to "currentTime" the class "present" is added to description
+    * if "hour" is more than "currentTime" the class "future" is added to description

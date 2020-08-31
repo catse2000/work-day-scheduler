@@ -20,54 +20,23 @@
     // future hours should remain green
 
     //array to store for localStorage
-    var events = [
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-        {
-            date: '',
-            text: ''
-        },
-    ];
+    var events = [{}];
 
     //create timeblocks
     var createBlock = function(text, hours){
+        //var currentTime = moment().format("H"); //store current hour
+
+        descClass = changeBackground(hours);
+
+        hoursNum = moment().set('hour', hours).format("hA")
+
         var blockLi = $("<li>")
             .addClass("time-block-list-item row");
         var blockTime = $("<p>")
             .addClass("hour col-1")
-            .text(hours);
+            .text(hoursNum);
         var blockDesc = $("<span>")
-            .addClass("description past col-10")
+            .addClass("description col-10 " + descClass)
             .text(text);
         var blockSave = $("<button>")
             .addClass("saveBtn col-1")
@@ -97,7 +66,7 @@
             .text(todaysDateV);
         
         //determine start time to day
-        var hours = moment().set('hour', 8).format("hA");
+        var hours = 8;
 
         //build time blocks based on number of hours in a day
         for (var i = 0; i <= hoursInDay; i++)
@@ -107,14 +76,10 @@
                 text = events[i].text;
             }
             createBlock(text, hours);
-            hours = moment().set('hour', 9).add(i, 'hour').format("hA");
+            //hours = moment().set('hour', 9).add(i, 'hour').format("hA");
+            hours++;
         }
         
-        // loop over object properties
-        // $.each(events, function(arr) {
-        //     events[arr].text = events.text;
-        //     console.log(arr);
-        // });
         
     };
 
@@ -161,18 +126,35 @@
             events[index].date = todaysDate;
             saveEvents();
 
+            var descClass = changeBackground(index + 8);
+
             //create new <span> element
             var blockDesc = $("<span>")
-                .addClass("description past col-10")
+                .addClass("description col-10 " + descClass)
                 .text(text);
-    
+            
             //replace <textarea> with <span> element
             $(textInput).replaceWith(blockDesc);
+
         });
     });
 
-   
+    //determine what color the background of each event time should be
+    var changeBackground = function(hours){
+        var currentTime = moment().format("H"); //store current hour
+        if (hours < currentTime){
+            var descClass = "past";
+        }
+        else if(hours === currentTime){
+            var descClass = "present";
+        }
+        else if(hours > currentTime){
+            var descClass = "future"
+        }
 
+        return descClass;
+    };
+    
 
     //eventHandlers for program to function
     loadEvents(); //loads the list of events and interactive elements
