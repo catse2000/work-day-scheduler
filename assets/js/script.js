@@ -40,6 +40,12 @@
 
     //loads when program is started
     var loadEvents = function() {
+        //assign today's date to the <p> element in the header
+        var todaysDate = moment().format("YYYYMMDD");
+        var todaysDateV = moment().format('MMMM Do YYYY');
+        var todaysDateP = $("#currentDay")
+            .text(todaysDateV);
+
         events = JSON.parse(localStorage.getItem("events"));
 
         //determine how many hours in a day
@@ -54,11 +60,7 @@
             }
         }
 
-        //assign today's date to the <p> element in the header
-        var todaysDate = moment().format("YYYYMMDD");
-        var todaysDateV = moment().format('MMMM Do YYYY');
-        var todaysDateP = $("#currentDay")
-            .text(todaysDateV);
+        
         
         //determine start time to day
         var hours = 8;
