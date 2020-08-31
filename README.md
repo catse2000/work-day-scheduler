@@ -30,3 +30,7 @@
     * "textarea" is replaced by new "span" element with new edited text on "saveBtn" click
 
 ### Data Persistence
+* when clicking "save" button application stores changes to "this" textarea in local storage
+* when application loads, it checks for content in local storage
+    * if index in local storage does not have content, "span" element is updated with ''
+
