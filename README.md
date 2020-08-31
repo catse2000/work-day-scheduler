@@ -35,8 +35,11 @@
     * if index in local storage does not have content, "span" element is updated with ''
 
 ### Task Colors
-* adjusted "hour" variable to push a number instead of a string to createEvent() so it can be compared
+* created changeBackground() function to handle the change of task background colors during load, and when a task is edited
+* variable is passed to changeBackground() an an if statement determines what time it is and returns a value
 * "hour" variable is compared against currentTime variable, which pulls the current hour, to determine what color the background should be
     * if "hour" is less than "currentTime" the class "past" is added to description
     * if "hour" is equal to "currentTime" the class "present" is added to description
     * if "hour" is more than "currentTime" the class "future" is added to description
+
+### Commenting and Code Cleanup
