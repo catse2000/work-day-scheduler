@@ -20,10 +20,47 @@
     // future hours should remain green
 
     //array to store for localStorage
-    var events = {};
+    var events = [
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+        {
+            date: '',
+            text: ''
+        },
+    ];
 
     //create timeblocks
-    var createBlock = function(hours){
+    var createBlock = function(text, hours){
         var blockLi = $("<li>")
             .addClass("time-block-list-item row");
         var blockTime = $("<p>")
@@ -31,7 +68,7 @@
             .text(hours);
         var blockDesc = $("<span>")
             .addClass("description past col-10")
-            .text("this is a description");
+            .text(text);
         var blockSave = $("<button>")
             .addClass("saveBtn col-1")
             .text("Save");
@@ -43,24 +80,47 @@
 
     //loads when program is started
     var loadEvents = function() {
-        //assign today's date to the <p> element in the header
-        var todaysDate = moment().format('MMMM Do YYYY');
-        var todaysDateP = $("#currentDay")
-            .text(todaysDate);
-        
+        events = JSON.parse(localStorage.getItem("events"));
+
         //determine how many hours in a day
         var hoursInDay = 9;
+        
+        //if nothing in localStorage, create a new object to track all events throughout the day
+        if (!events){
+            events = [{}];
+        }
 
+        //assign today's date to the <p> element in the header
+        var todaysDate = moment().format("YYYYMMDD");
+        var todaysDateV = moment().format('MMMM Do YYYY');
+        var todaysDateP = $("#currentDay")
+            .text(todaysDateV);
+        
         //determine start time to day
         var hours = moment().set('hour', 8).format("hA");
 
         //build time blocks based on number of hours in a day
         for (var i = 0; i <= hoursInDay; i++)
-        {
-            createBlock(hours);
+        {   
+            var text = '';
+            if (events[i] && todaysDate === events[i].date){
+                text = events[i].text;
+            }
+            createBlock(text, hours);
             hours = moment().set('hour', 9).add(i, 'hour').format("hA");
         }
         
+        // loop over object properties
+        // $.each(events, function(arr) {
+        //     events[arr].text = events.text;
+        //     console.log(arr);
+        // });
+        
+    };
+
+    //saves events in local storage
+    var saveEvents = function(){
+        localStorage.setItem("events", JSON.stringify(events));
     };
 
     //determines what happens when the "span" element is clicked
@@ -75,7 +135,12 @@
             .addClass("form-control col-10")
             .val(text);
 
-        //replace <span> with <textarea>
+        //get the task's position in the list of other li elements
+        var index = $(this)
+            .closest(".time-block-list-item")
+            .index();
+        
+            //replace <span> with <textarea>
         $(this).replaceWith(textInput);
         textInput.trigger("focus");
 
@@ -88,11 +153,13 @@
                 .trim();
 
             //get the date
-        
-            //get the task's position in the list of other li elements
-            var index = $(textInput)
-                .closest(".time-block-list-item")
-                .index();
+            var todaysDate = moment().format('YYYYMMDD');
+
+            //store in array
+            console.log(events);
+            events[index].text = text;
+            events[index].date = todaysDate;
+            saveEvents();
 
             //create new <span> element
             var blockDesc = $("<span>")
