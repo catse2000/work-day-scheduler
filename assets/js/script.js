@@ -78,7 +78,6 @@
         //replace <span> with <textarea>
         $(this).replaceWith(textInput);
         textInput.trigger("focus");
-        console.log(this);
 
          //handle what happens when editing is complete, or another element is selected
         $("#time-block-list").on("click", "button", function(){

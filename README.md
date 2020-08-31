@@ -18,3 +18,15 @@
 * used momentjs to determine today's date, and the hour for every timeblock
 
 ### Edit Events
+* add click event that turns "span" element into a "textarea" element so that text can be edited
+    * click event takes text from "span" and stores it in a variable
+    * new "textarea" element is created
+    * "span" element is replaced with "textarea" element and includes previous text for editing
+    * focus is placed on "textarea"
+* add click event to end editing and save to program when "saveBtn" is clicked
+    * click event takes text from "textarea" and stores it in a variable
+    * click event takes index of "li" and stores it
+    * new "span" element is created with className of previous "span" element
+    * "textarea" is replaced by new "span" element with new edited text on "saveBtn" click
+
+### Data Persistence
