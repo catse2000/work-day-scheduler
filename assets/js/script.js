@@ -139,7 +139,7 @@
         if (hours < currentTime){
             var descClass = "past";
         }
-        else if(hours === currentTime){
+        else if(hours == currentTime){
             var descClass = "present";
         }
         else if(hours > currentTime){
