@@ -63,6 +63,50 @@
         
     };
 
+    //determines what happens when the "span" element is clicked
+    $("#time-block-list").on("click", "span", function(){
+        //get the "span" element's text
+        var text = $(this)
+            .text()
+            .trim();
+        
+        //create <textarea> element to enter text to
+        var textInput = $("<textarea>")
+            .addClass("form-control col-10")
+            .val(text);
+
+        //replace <span> with <textarea>
+        $(this).replaceWith(textInput);
+        textInput.trigger("focus");
+        console.log(this);
+
+         //handle what happens when editing is complete, or another element is selected
+        $("#time-block-list").on("click", "button", function(){
+
+            //get the textarea's current value/text
+            var text = $(textInput)
+                .val()
+                .trim();
+
+            //get the date
+        
+            //get the task's position in the list of other li elements
+            var index = $(textInput)
+                .closest(".time-block-list-item")
+                .index();
+
+            //create new <span> element
+            var blockDesc = $("<span>")
+                .addClass("description past col-10")
+                .text(text);
+    
+            //replace <textarea> with <span> element
+            $(textInput).replaceWith(blockDesc);
+        });
+    });
+
+   
+
 
     //eventHandlers for program to function
     loadEvents(); //loads the list of events and interactive elements
