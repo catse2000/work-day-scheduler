@@ -1,5 +1,5 @@
     //array to store for localStorage
-    var events = [{}];
+    var events = {};
 
     //create timeblocks
     var createBlock = function(text, hours){
@@ -43,7 +43,7 @@
         
         //if nothing in localStorage, create a new object to track all events throughout the day
         if (!events){
-            events = [{}];
+            events = {};
         }
 
         //assign today's date to the <p> element in the header
@@ -63,7 +63,6 @@
                 text = events[i].text;
             }
             createBlock(text, hours);
-            //hours = moment().set('hour', 9).add(i, 'hour').format("hA");
             hours++;
         }
         
@@ -90,8 +89,8 @@
         var index = $(this)
             .closest(".time-block-list-item")
             .index();
-        
-            //replace <span> with <textarea>
+
+        //replace <span> with <textarea>
         $(this).replaceWith(textInput);
         textInput.trigger("focus");
 
@@ -106,8 +105,8 @@
             //get the date
             var todaysDate = moment().format('YYYYMMDD');
 
+
             //store in array
-            console.log(events);
             events[index].text = text;
             events[index].date = todaysDate;
             saveEvents();
